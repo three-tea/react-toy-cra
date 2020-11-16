@@ -1,5 +1,5 @@
-import { combineReducers } from 'redux';
-import { connectRouter } from 'connected-react-router';
+import { combineReducers } from 'redux-immutablejs';
+import { connectRouter } from 'connected-react-router/immutable';
 import test from './mTest';
 
 const rootReducer = (history) => combineReducers({

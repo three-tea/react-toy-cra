@@ -6,7 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
 import { Map } from 'immutable';
 import { createBrowserHistory } from 'history';
-import { ConnectedRouter } from 'connected-react-router';
+import { ConnectedRouter } from 'connected-react-router/immutable';
 import configureStore from './config/configureStore';
 
 const initialState = Map();
