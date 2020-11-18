@@ -1,11 +1,13 @@
 import React from 'react';
 import './App.css';
-import RayTest from './components/RayTest/RayTest';
+import ListTest2 from './components/RayTest/ListTest2';
 
 function App() {
   return (
     <div className="App">
-      <RayTest />
+      {/*<RayTest />*/}
+      {/*<ListTest1 />*/}
+      <ListTest2 />
     </div>
   );
 }
