@@ -1,21 +1,36 @@
-import React from 'react';
-import { shallowEqual, useDispatch, useSelector } from 'react-redux';
-import { changeStateByKey } from '../../modules/mTest';
+import React, { useEffect } from 'react'
+import { getList } from '../../modules/mList'
+import { shallowEqual, useDispatch, useSelector } from 'react-redux'
 
 const RayTest = () => {
-  const dispatch = useDispatch();
-  const { name } = useSelector((state) => state.get('test'), shallowEqual);
-  console.log('name:', name);
+  const dispatch = useDispatch()
+  const { listItems } = useSelector(state => {
+    return state.get('list')
+  }, shallowEqual)
+
+  const fetchData = () => {
+    try {
+      dispatch(getList())
+    } catch (e) {
+      console.log(e)
+    }
+  }
+
+  useEffect(() => {
+    fetchData()
+  }, [])
+
   return (
     <>
-      <input
-        type="text"
-        value={name}
-        onChange={(e) => dispatch(changeStateByKey('name', e.target.value))}
-      />
-      <div>{name} Welcome.</div>
+      <div>RayTest</div>
+      <ol>
+        {listItems?.map(item => {
+          const { objectID, title } = item
+          return <li key={objectID}>{title}</li>
+        })}
+      </ol>
     </>
-  );
-};
+  )
+}
 
-export default RayTest;
+export default RayTest
