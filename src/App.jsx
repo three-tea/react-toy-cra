@@ -1,13 +1,13 @@
 import React from 'react'
 import './App.css'
-import RayTest from './components/RayTest/RayTest'
+import ListItemControl from './components/RayTest/ListItemControl'
 
 function App() {
   return (
     <div className="App">
-      <RayTest />
+      <ListItemControl />
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
