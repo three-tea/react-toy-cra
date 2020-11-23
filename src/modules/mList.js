@@ -62,10 +62,10 @@ export const getList = () => {
     try {
       Promise.all([getQueryData('react'), getQueryData('redux')]).then(
         ([result1, result2]) => {
-          dispatch(saveContents(result1.data.hits))
-          dispatch(saveContents(result2.data.hits))
           console.log('result1:', result1)
           console.log('result2:', result2)
+          // dispatch(saveContents(result1.data.page))
+          dispatch(saveContents(result2.data.hits))
         }
       )
     } catch (e) {
