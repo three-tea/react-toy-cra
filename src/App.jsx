@@ -1,11 +1,11 @@
 import React from 'react'
 import './App.css'
-import ListItemControl from './components/RayTest/ListItemControl'
+import Test from './components/RayTest/Test'
 
 function App() {
   return (
     <div className="App">
-      <ListItemControl />
+      <Test />
     </div>
   )
 }
