@@ -8,6 +8,7 @@ import { Map } from 'immutable';
 import { createBrowserHistory } from 'history';
 import { ConnectedRouter } from 'connected-react-router/immutable';
 import configureStore from './config/configureStore';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const initialState = Map();
 const history = createBrowserHistory();
