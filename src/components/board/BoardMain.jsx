@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import { fromJS } from 'immutable'
+import styled from 'styled-components'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
-import styled from 'styled-components'
 import Pagination from 'react-bootstrap/Pagination'
-import Table from 'react-bootstrap/Table'
 
 const Root = styled.div`
   margin: 20px;
@@ -20,43 +19,44 @@ const Border = styled.div`
 `
 
 const BoardMain = () => {
-  const data = fromJS(
-    Array(45)
-      .fill(0)
-      .map((num, index) => {
-        const padNum = `${index}`.padStart(2, '0')
-        return {
-          id: Number(`10${padNum}`),
-          content: `content${padNum}`,
-          date: `2020-12-02 10:${padNum}`,
-        }
-      })
-  )
+  const data = useMemo(() => {
+    return fromJS(
+      Array(45)
+        .fill(0)
+        .map((num, index) => {
+          const padNum = `${index}`.padStart(2, '0')
+          return {
+            id: Number(`10${padNum}`),
+            content: `content${padNum}`,
+            date: `2020-12-02 10:${padNum}`,
+          }
+        })
+    )
+  }, [])
+
   const [items, setItems] = useState([])
   const [currentPage, setCurrentPage] = useState(0)
   const [pages, setPages] = useState([])
 
-  const onFirst = () => {
-    setCurrentPage(0)
-  }
+  const onFirst = useCallback(() => setCurrentPage(0), [])
 
-  const onPrev = () => {
-    setCurrentPage(prevState => (prevState > 0 ? prevState - 1 : prevState))
-  }
+  const onPrev = useCallback(
+    () =>
+      setCurrentPage(prevState => (prevState > 0 ? prevState - 1 : prevState)),
+    []
+  )
 
-  const onPage = index => () => {
-    setCurrentPage(index)
-  }
+  const onPage = useCallback(index => () => setCurrentPage(index), [])
 
-  const onNext = () => {
-    setCurrentPage(prevState => {
-      return prevState < pages.size - 1 ? prevState + 1 : prevState
-    })
-  }
+  const onNext = useCallback(
+    () =>
+      setCurrentPage(prevState => {
+        return prevState < pages.size - 1 ? prevState + 1 : prevState
+      }),
+    [pages]
+  )
 
-  const onLast = () => {
-    setCurrentPage(pages.size - 1)
-  }
+  const onLast = useCallback(() => setCurrentPage(pages.size - 1), [pages])
 
   useEffect(() => {
     const convertData = data.filter(
@@ -68,7 +68,7 @@ const BoardMain = () => {
       .filter((item, index) => index % 10 === 0)
       .map((item, index) => index)
     setPages(pageIndexes)
-  }, [currentPage])
+  }, [data, currentPage])
 
   return (
     <Root>
