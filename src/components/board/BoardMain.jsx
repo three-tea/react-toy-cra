@@ -1,10 +1,8 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import { fromJS } from 'immutable'
 import styled from 'styled-components'
-import Container from 'react-bootstrap/Container'
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
 import Pagination from 'react-bootstrap/Pagination'
+import { Table } from 'react-bootstrap'
 
 const Root = styled.div`
   margin: 20px;
@@ -72,54 +70,32 @@ const BoardMain = () => {
 
   return (
     <Root>
-      <Border>
-        <b>변경이력</b>
-      </Border>
-      <Container fluid style={{ height: 450 }}>
-        {items.map((item, index) => {
-          const { id, content, date } = item
-          return (
-            <Row key={`${id}-${index}`}>
-              <Col xs as={Border}>
-                {content}
-              </Col>
-              <Col xs={3} as={Border}>
-                {date}
-              </Col>
-            </Row>
-          )
-        })}
-      </Container>
-      {/*<Table>*/}
-      {/*  <thead>*/}
-      {/*    <tr>*/}
-      {/*      <td>*/}
-      {/*        <b>변경이력</b>*/}
-      {/*      </td>*/}
-      {/*    </tr>*/}
-      {/*  </thead>*/}
-      {/*  <tbody>*/}
-      {/*    {items.map((item, index) => {*/}
-      {/*      const { id, content, date } = item*/}
-      {/*      return (*/}
-      {/*        <tr key={`${id}-${index}`}>*/}
-      {/*          <td*/}
-      {/*            style={{*/}
-      {/*              backgroundColor: 'skyblue',*/}
-      {/*            }}>*/}
-      {/*            {content}*/}
-      {/*          </td>*/}
-      {/*          <td style={{ backgroundColor: 'pink' }}>{date}</td>*/}
-      {/*        </tr>*/}
-      {/*      )*/}
-      {/*    })}*/}
-      {/*  </tbody>*/}
-      {/*</Table>*/}
+      <Table style={{ borderBottom: '1px solid lightgray' }}>
+        <thead>
+          <tr>
+            <td>
+              <b>변경이력</b>
+            </td>
+          </tr>
+        </thead>
+        <tbody>
+          {items.map((item, index) => {
+            const { id, content, date } = item
+            return (
+              <tr key={`${id}-${index}`}>
+                <td style={{}}>{content}</td>
+                <td style={{ width: 200, borderLeft: '1px solid lightgray' }}>
+                  {date}
+                </td>
+              </tr>
+            )
+          })}
+        </tbody>
+      </Table>
       <div
         style={{
           display: 'flex',
           justifyContent: 'center',
-          marginTop: 20,
           marginBottom: 20,
         }}>
         <Pagination style={{ margin: 0 }}>
