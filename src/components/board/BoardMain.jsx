@@ -1,19 +1,14 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import { fromJS } from 'immutable'
 import styled from 'styled-components'
-import Pagination from 'react-bootstrap/Pagination'
-import { Table } from 'react-bootstrap'
+import { Table, Card, Pagination } from 'react-bootstrap'
+import Payment from './Payment'
+import Media from './Media'
 
-const Root = styled.div`
+const Box = styled.div`
   margin: 20px;
   padding: 0.1px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-`
-
-const Border = styled.div`
-  padding: 10px;
-  border-bottom: 1px solid lightgray;
-  border-left: 1px solid lightgray;
 `
 
 const BoardMain = () => {
@@ -69,53 +64,61 @@ const BoardMain = () => {
   }, [data, currentPage])
 
   return (
-    <Root>
-      <Table style={{ borderBottom: '1px solid lightgray' }}>
-        <thead>
-          <tr>
-            <td>
-              <b>변경이력</b>
-            </td>
-          </tr>
-        </thead>
-        <tbody>
-          {items.map((item, index) => {
-            const { id, content, date } = item
-            return (
-              <tr key={`${id}-${index}`}>
-                <td style={{}}>{content}</td>
-                <td style={{ width: 200, borderLeft: '1px solid lightgray' }}>
-                  {date}
-                </td>
-              </tr>
-            )
-          })}
-        </tbody>
-      </Table>
-      <div
-        style={{
-          display: 'flex',
-          justifyContent: 'center',
-          marginBottom: 20,
-        }}>
-        <Pagination style={{ margin: 0 }}>
-          <Pagination.First onClick={onFirst} />
-          <Pagination.Prev onClick={onPrev} />
-          {pages.map(page => {
-            return (
-              <Pagination.Item
-                key={`Pagination-${page}`}
-                onClick={onPage(page)}
-                active={page === currentPage}>
-                {page + 1}
-              </Pagination.Item>
-            )
-          })}
-          <Pagination.Next onClick={onNext} />
-          <Pagination.Last onClick={onLast} />
-        </Pagination>
-      </div>
-    </Root>
+    <>
+      <Box>
+        <Media />
+      </Box>
+      <Box>
+        <Payment />
+      </Box>
+      <Box>
+        <Table style={{ borderBottom: '1px solid lightgray' }}>
+          <thead>
+            <tr>
+              <td>
+                <b>변경이력</b>
+              </td>
+            </tr>
+          </thead>
+          <tbody>
+            {items.map((item, index) => {
+              const { id, content, date } = item
+              return (
+                <tr key={`${id}-${index}`}>
+                  <td style={{}}>{content}</td>
+                  <td style={{ width: 200, borderLeft: '1px solid lightgray' }}>
+                    {date}
+                  </td>
+                </tr>
+              )
+            })}
+          </tbody>
+        </Table>
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            marginBottom: 20,
+          }}>
+          <Pagination style={{ margin: 0 }}>
+            <Pagination.First onClick={onFirst} />
+            <Pagination.Prev onClick={onPrev} />
+            {pages.map(page => {
+              return (
+                <Pagination.Item
+                  key={`Pagination-${page}`}
+                  onClick={onPage(page)}
+                  active={page === currentPage}>
+                  {page + 1}
+                </Pagination.Item>
+              )
+            })}
+            <Pagination.Next onClick={onNext} />
+            <Pagination.Last onClick={onLast} />
+          </Pagination>
+        </div>
+      </Box>
+    </>
   )
 }
 
