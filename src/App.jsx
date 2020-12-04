@@ -1,9 +1,9 @@
 import React from 'react'
 import './App.css'
-import BoardMain from './components/board/BoardMain'
+import InputSet from './components/RayTest/InputSet'
 
 function App() {
-  return <BoardMain />
+  return <InputSet />
 }
 
 export default App
