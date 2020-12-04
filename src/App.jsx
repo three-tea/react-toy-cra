@@ -1,9 +1,9 @@
 import React from 'react'
 import './App.css'
-import InputSet from './components/RayTest/InputSet'
+import AdMain from './components/advertise/AdMain'
 
 function App() {
-  return <InputSet />
+  return <AdMain />
 }
 
 export default App
