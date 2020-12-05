@@ -1,56 +1,15 @@
-import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import React, { useRef } from 'react'
+import useVideoPlayer from '../../hook/useVideoPlayer'
 
 const VideoPlayer = () => {
   const videoRef = useRef(null)
-  const [paused, setPaused] = useState(true)
-  const [muted, setMuted] = useState(false)
-  const [currentTime, setCurrentTime] = useState(0)
 
-  const handlePlayPause = useCallback(() => {
-    if (paused) {
-      videoRef.current.play()
-      setPaused(false)
-    } else {
-      videoRef.current.pause()
-      setPaused(true)
-    }
-  }, [paused])
-
-  const handleMute = useCallback(() => {
-    if (muted) {
-      videoRef.current.muted = false
-      setMuted(false)
-    } else {
-      videoRef.current.muted = true
-      setMuted(true)
-    }
-  }, [muted])
-
-  const getRemainingTime = useCallback(() => {
-    const duration = videoRef?.current?.duration
-    if (!duration) {
-      return '0:00'
-    }
-    const seconds = duration - currentTime
-    const hour = Math.floor(seconds / (60 * 60))
-    const min = Math.floor(seconds / 60)
-    const sec = Math.floor(seconds % 60)
-    if (hour) {
-      return `${hour}:${min}:${String(sec).padStart(2, '0')}`
-    } else {
-      return `${min}:${String(sec).padStart(2, '0')}`
-    }
-  }, [currentTime])
-
-  useEffect(() => {
-    const timeInterval = setInterval(() => {
-      const currentTime = videoRef?.current?.currentTime
-      setCurrentTime(currentTime)
-    }, 100)
-    return () => {
-      clearInterval(timeInterval)
-    }
-  }, [paused])
+  const {
+    videoCallback: { onPlay, onMute },
+    isPlay,
+    isMute,
+    getRemainTime,
+  } = useVideoPlayer({ videoRef })
 
   return (
     <>
@@ -65,14 +24,12 @@ const VideoPlayer = () => {
           style={{ backgroundColor: 'black' }}
           width="500">
           <source src="video-forest.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
+          브라우저가 비디오를 지원하지 않습니다
         </video>
         <div style={{ position: 'absolute', width: 500, bottom: 10, left: 10 }}>
-          <button onClick={handlePlayPause}>{paused ? 'Play' : 'Pause'}</button>
-          <span style={{ color: 'white', padding: 10 }}>
-            {getRemainingTime()}
-          </span>
-          <button onClick={handleMute}>{muted ? 'Mute' : 'Unmute'}</button>
+          <button onClick={onPlay}>{isPlay ? 'Pause' : 'Play'}</button>
+          <span style={{ color: 'white', padding: 10 }}>{getRemainTime()}</span>
+          <button onClick={onMute}>{isMute ? 'sound Off' : 'sound On'}</button>
         </div>
       </div>
     </>
