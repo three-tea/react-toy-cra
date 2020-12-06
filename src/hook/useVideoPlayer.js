@@ -2,20 +2,23 @@ import { useCallback, useEffect, useState } from 'react'
 
 const useVideoPlayer = ({ videoRef }) => {
   const [isPlay, setIsPlay] = useState(false)
-  const [isMute, setIsMute] = useState(false)
   const [currentTime, setCurrentTime] = useState(0)
 
   const onPlay = useCallback(() => {
     setIsPlay(!isPlay)
   }, [isPlay])
 
-  const onMute = useCallback(() => {
-    setIsMute(!isMute)
-  }, [isMute])
+  const onPlaying = useCallback(() => {
+    setIsPlay(true)
+  }, [])
+
+  const onEnded = useCallback(() => {
+    setIsPlay(false)
+  }, [])
 
   const getRemainTimeSeparatedString = second => {
     let ss = parseInt(second, 10)
-    let mm = parseInt(ss / 60, 10)
+    let mm = parseInt(String(ss / 60), 10)
     ss = ss > 60 ? ss - mm * 60 : ss
     ss = ss < 10 ? '0' + ss : ss
     return mm + ':' + ss
@@ -39,10 +42,6 @@ const useVideoPlayer = ({ videoRef }) => {
   }, [isPlay, videoRef])
 
   useEffect(() => {
-    videoRef.current.muted = isMute
-  }, [isMute, videoRef])
-
-  useEffect(() => {
     const timeInterval = setInterval(() => {
       setCurrentTime(videoRef?.current?.currentTime)
     }, 100)
@@ -53,13 +52,13 @@ const useVideoPlayer = ({ videoRef }) => {
 
   const videoCallback = {
     onPlay,
-    onMute,
   }
 
   return {
     videoCallback,
     isPlay,
-    isMute,
+    onPlaying,
+    onEnded,
     getRemainTime,
   }
 }
