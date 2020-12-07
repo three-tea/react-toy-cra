@@ -3,32 +3,39 @@ import { useCallback, useEffect, useState } from 'react'
 const useFileUpload = () => {
   const [progressPercent, setProgressPercent] = useState(0)
   const [videoUrl, setVideoUrl] = useState('')
-  const [files, setFiles] = useState([])
+  const [file, setFile] = useState(null)
 
-  const onFile = useCallback(e => {
-    const { files } = e.target
-    if (files.length) {
-      setProgressPercent(0)
-      setVideoUrl('')
-      setFiles(files)
-    }
+  const onChangeFile = useCallback(e => {
+    const [video] = e.target.files
+    setProgressPercent(0)
+    setVideoUrl('')
+    setFile(video)
   }, [])
 
   useEffect(() => {
-    const progressInterval = setInterval(() => {
-      if (files.length && progressPercent >= 0 && progressPercent < 100)
-        setProgressPercent(prevState => prevState + 10)
-    }, 100)
-    if (files.length && progressPercent === 100) {
-      setVideoUrl(URL.createObjectURL(files[0]))
+    let id
+    if (file !== null) {
+      if (progressPercent < 100) {
+        id = window.setInterval(
+          () => setProgressPercent(prev => prev + 10),
+          200
+        )
+      } else {
+        setVideoUrl(URL.createObjectURL(file))
+        setFile(null)
+        setProgressPercent(0)
+      }
     }
+
     return () => {
-      clearInterval(progressInterval)
+      if (id !== undefined) {
+        window.clearInterval(id)
+      }
     }
-  }, [files, progressPercent])
+  }, [file, progressPercent])
 
   return {
-    onFile,
+    onChangeFile,
     progressPercent,
     videoUrl,
   }

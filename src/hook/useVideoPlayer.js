@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from 'react'
 
 const useVideoPlayer = ({ videoRef }) => {
   const [isPlay, setIsPlay] = useState(false)
+  const [isMuted, setIsMuted] = useState(false)
   const [currentTime, setCurrentTime] = useState(0)
 
   const onPlay = useCallback(() => {
@@ -11,6 +12,11 @@ const useVideoPlayer = ({ videoRef }) => {
   const onPlaying = useCallback(() => {
     setIsPlay(true)
   }, [])
+
+  const onMuted = useCallback(() => {
+    console.log('isMuted:', isMuted)
+    setIsMuted(!isMuted)
+  }, [isMuted])
 
   const onEnded = useCallback(() => {
     setIsPlay(false)
@@ -42,6 +48,10 @@ const useVideoPlayer = ({ videoRef }) => {
   }, [isPlay, videoRef])
 
   useEffect(() => {
+    videoRef.current.muted = isMuted
+  }, [isMuted, videoRef])
+
+  useEffect(() => {
     const timeInterval = setInterval(() => {
       setCurrentTime(videoRef?.current?.currentTime)
     }, 100)
@@ -52,11 +62,13 @@ const useVideoPlayer = ({ videoRef }) => {
 
   const videoCallback = {
     onPlay,
+    onMuted,
   }
 
   return {
     videoCallback,
     isPlay,
+    isMuted,
     onPlaying,
     onEnded,
     getRemainTime,

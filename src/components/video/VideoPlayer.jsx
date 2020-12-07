@@ -1,25 +1,25 @@
-import React, { useCallback, useRef, useState } from 'react'
+import React, { useMemo, useRef } from 'react'
 import useVideoPlayer from '../../hook/useVideoPlayer'
-import { ProgressBar } from 'react-bootstrap'
 import useFileUpload from '../../hook/useFileUpload'
 
 const VideoPlayer = () => {
   const videoRef = useRef(null)
-  const [isMuted, setIsMuted] = useState(false)
 
   const {
-    videoCallback: { onPlay },
+    videoCallback: { onPlay, onMuted },
     isPlay,
+    isMuted,
     onPlaying,
     onEnded,
     getRemainTime,
   } = useVideoPlayer({ videoRef })
 
-  const { onFile, progressPercent, videoUrl } = useFileUpload()
+  const { onChangeFile, progressPercent, videoUrl } = useFileUpload()
 
-  const handleMuted = useCallback(() => {
-    setIsMuted(!isMuted)
-  }, [isMuted])
+  const isShowProgressBar = useMemo(
+    () => progressPercent > 0 && progressPercent <= 100,
+    [progressPercent]
+  )
 
   return (
     <>
@@ -28,13 +28,12 @@ const VideoPlayer = () => {
       </header>
       <div style={{ position: 'relative', width: 500, height: 500 }}>
         <video
-          autoPlay
+          autoPlay={true}
           ref={videoRef}
           poster="logo192.png"
           src={videoUrl}
           onPlaying={onPlaying}
           onEnded={onEnded}
-          muted={isMuted}
           style={{ backgroundColor: 'black' }}
           width="500">
           브라우저가 비디오를 지원하지 않습니다
@@ -44,18 +43,27 @@ const VideoPlayer = () => {
           <span style={{ color: 'white', padding: 10 }}>
             <span style={{ backgroundColor: 'black' }}>{getRemainTime()}</span>
           </span>
-          <button onClick={handleMuted}>
+          <button onClick={onMuted}>
             {isMuted ? 'sound Off' : 'sound On'}
           </button>
         </div>
       </div>
       <div>
-        <input type="file" onChange={onFile} />
-        <ProgressBar
-          animated={progressPercent !== 100}
-          now={progressPercent}
-          label={`${progressPercent}%`}
-        />
+        {!isShowProgressBar && (
+          <input type="file" onChange={onChangeFile} accept="video/*" />
+        )}
+        {isShowProgressBar && (
+          <div style={{ width: 500, backgroundColor: 'pink' }}>
+            <div
+              style={{
+                height: 25,
+                backgroundColor: 'blue',
+                width: `${progressPercent}%`,
+              }}>
+              `${progressPercent}%`
+            </div>
+          </div>
+        )}
       </div>
     </>
   )
