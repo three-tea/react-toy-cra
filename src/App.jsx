@@ -1,9 +1,9 @@
 import React from 'react'
 import './App.css'
-import AdMain from './components/advertise/AdMain'
+import VideoPlayer from './components/video/VideoPlayer'
 
 function App() {
-  return <AdMain />
+  return <VideoPlayer />
 }
 
 export default App
