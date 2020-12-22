@@ -76,9 +76,9 @@ class ListItemControl extends Component {
 }
 
 const mapStateToProps = state => {
-  const { contentsList } = state.get('listItemControl');
+  const { contentsList } = state.get('listItemControl')
   return {
-    contentsList
+    contentsList,
   }
 }
 

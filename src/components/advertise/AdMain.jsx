@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react'
-import { Container, Table, Tab, Row, Col, Nav } from 'react-bootstrap'
+import { Col, Container, Nav, Row, Tab } from 'react-bootstrap'
 import Card from './Card'
 
 const TAB_KEYS = [
@@ -123,9 +123,7 @@ const AdMain = () => {
     const { type, subtitles, subtitlesData, content } = row
     switch (type) {
       case 'basic':
-        return (
-          <BasicCard subtitles={subtitles} subtitlesData={subtitlesData} />
-        )
+        return <BasicCard subtitles={subtitles} subtitlesData={subtitlesData} />
       case 'member':
         return (
           <MemberCard subtitles={subtitles} subtitlesData={subtitlesData} />
@@ -206,8 +204,7 @@ const AdMain = () => {
           <span style={{ color: 'darkgray', marginLeft: 10 }}>27429</span>
         </h5>
       </header>
-      <div key="header" style={{ display: 'flex' }}>
-      </div>
+      <div key="header" style={{ display: 'flex' }}></div>
       <div key="tab" style={{ marginTop: 20 }}>
         <Tab.Container defaultActiveKey="first">
           <Row>

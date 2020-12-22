@@ -1,10 +1,6 @@
-import React, { useState } from 'react'
-import { shallowEqual, useDispatch, useSelector } from 'react-redux'
-import {
-  removeContentsItem,
-  setContentsItem,
-  updateContentsItem,
-} from '../../modules/mListItemControl'
+import React, { useState } from "react";
+import { shallowEqual, useDispatch, useSelector } from "react-redux";
+import { removeContentsItem, setContentsItem, updateContentsItem } from "../../modules/mListItemControl";
 
 const ListItemControlHook = () => {
   const [inputFile, setInputFile] = useState(null)
@@ -12,7 +8,7 @@ const ListItemControlHook = () => {
   const dispatch = useDispatch()
   const { contentsList } = useSelector(
     state => state.get('listItemControl'),
-    shallowEqual,
+    shallowEqual
   )
 
   const isEmpty = contentsList?.isEmpty()
@@ -35,7 +31,7 @@ const ListItemControlHook = () => {
             const [{ name, size, type }] = files // file 객체에서 필요한 특정 정보만 뽑음
             const blob = new Blob(
               [JSON.stringify({ hello: 'world' }, null, 2)],
-              { type },
+              { type }
             )
             const url = URL.createObjectURL(files[0])
             setUrl(url)
@@ -57,7 +53,7 @@ const ListItemControlHook = () => {
                   size,
                   type,
                 },
-              }),
+              })
             )
           }
 
@@ -85,7 +81,7 @@ const ListItemControlHook = () => {
                   updateContentsItem(i, {
                     type: type.split('/')[0],
                     data: { name, size, type },
-                  }),
+                  })
                 )
               }}>
               {v.getIn(['data', 'name'])}

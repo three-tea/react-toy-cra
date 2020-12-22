@@ -1,6 +1,6 @@
-import React, { useMemo, useRef } from 'react';
-import { responseData } from '../../utils/utils';
-import useDragList from '../../hook/useDragList';
+import React, { useMemo, useRef } from 'react'
+import { responseData } from '../../utils/utils'
+import useDragList from '../../hook/useDragList'
 
 /**
  * 드래그 가능한 타겟에서 발생한 이벤트
@@ -19,8 +19,8 @@ import useDragList from '../../hook/useDragList';
 // Array.from(listRef.current.children).indexOf(e.target)
 
 const DragList = () => {
-  const { contents } = responseData;
-  const listRef = useRef(null);
+  const { contents } = responseData
+  const listRef = useRef(null)
 
   const listStyle = useMemo(
     () => ({
@@ -28,8 +28,8 @@ const DragList = () => {
       paddingTop: 5,
       background: 'rgba(255,100,100,0.5)',
     }),
-    [],
-  );
+    []
+  )
 
   const {
     handleDragStart,
@@ -42,7 +42,7 @@ const DragList = () => {
   } = useDragList({
     contents,
     listRef,
-  });
+  })
 
   return (
     <div style={{ padding: 100 }}>
@@ -53,11 +53,10 @@ const DragList = () => {
         onDragEnd={handleDragEnd}
         onDragEnter={handleDragEnter}
         onDragOver={handleDragOver}
-        onDrop={handleDrop}
-      >
-        {
-          list && list.map((item, index) => {
-            const { id, name } = item;
+        onDrop={handleDrop}>
+        {list &&
+          list.map((item, index) => {
+            const { id, name } = item
             return (
               <li
                 key={id}
@@ -69,18 +68,17 @@ const DragList = () => {
                   marginRight: 35,
                   border: '1px solid',
                   marginBottom: 5,
-                  background: movingIndex === index ? 'rgba(0,255,0,0.3)' : undefined,
+                  background:
+                    movingIndex === index ? 'rgba(0,255,0,0.3)' : undefined,
                 }}
-                draggable={true}
-              >
+                draggable={true}>
                 {movingIndex === index ? '' : name}
               </li>
-            );
-          })
-        }
+            )
+          })}
       </ul>
     </div>
-  );
-};
+  )
+}
 
-export default DragList;
+export default DragList
