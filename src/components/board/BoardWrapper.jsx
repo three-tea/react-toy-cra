@@ -7,12 +7,12 @@ import { Dropdown, DropdownButton } from "react-bootstrap";
 const BoardWrapper = () => {
   return (
     <div>
-      <DropdownButton title="보드메인">
-        <Dropdown.Item href="/board1/board1">보드메인1</Dropdown.Item>
-        <Dropdown.Item href="/board1/board2">보드메인2</Dropdown.Item>
+      <DropdownButton title="보드">
+        <Dropdown.Item href="/board/main">메인보드</Dropdown.Item>
+        <Dropdown.Item href="/board/sub">서브보드</Dropdown.Item>
       </DropdownButton>
-      <Route path="/board1/board1" component={BoardMain} />
-      <Route path="/board1/board2" component={BoardMain2} />
+      <Route path="/board/main" component={BoardMain} />
+      <Route path="/board/sub" component={BoardMain2} />
     </div>
   )
 }

@@ -7,12 +7,12 @@ import CSVDownload2 from "./CSVDownload2";
 const DownloadWrapper = () => {
   return (
     <div>
-      <DropdownButton title="다운로드메뉴">
-        <Dropdown.Item href="/download1/download1">다운로드1</Dropdown.Item>
-        <Dropdown.Item href="/download1/download2">다운로드2</Dropdown.Item>
+      <DropdownButton title="다운로드">
+        <Dropdown.Item href="/download/main">메인다운로드</Dropdown.Item>
+        <Dropdown.Item href="/download/sub">서브다운로드</Dropdown.Item>
       </DropdownButton>
-      <Route path="/download1/download1" component={CSVDownload} />
-      <Route path="/download1/download2" component={CSVDownload2} />
+      <Route path="/download/main" component={CSVDownload} />
+      <Route path="/download/sub" component={CSVDownload2} />
     </div>
   )
 }

@@ -7,20 +7,20 @@ import ListItemControl2 from './ListItemControl2'
 const ListItemControlWrapper = () => {
   return (
     <div>
-      <DropdownButton title="리스트아이템컨트롤메뉴">
-        <Dropdown.Item href="/list-item-control1/list-item-control1">
-          리스트아이템컨트롤메뉴1
+      <DropdownButton title="컨트롤">
+        <Dropdown.Item href="/control/main">
+          메인컨트롤
         </Dropdown.Item>
-        <Dropdown.Item href="/list-item-control1/list-item-control2">
-          리스트아이템컨트롤메뉴2
+        <Dropdown.Item href="/control/sub">
+          서브컨트롤
         </Dropdown.Item>
       </DropdownButton>
       <Route
-        path="/list-item-control1/list-item-control1"
+        path="/control/main"
         component={ListItemControl}
       />
       <Route
-        path="/list-item-control1/list-item-control2"
+        path="/control/sub"
         component={ListItemControl2}
       />
     </div>

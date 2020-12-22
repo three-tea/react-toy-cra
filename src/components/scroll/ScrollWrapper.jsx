@@ -7,12 +7,12 @@ import InfinityScrollList2 from './InfinityScrollList2'
 const ScrollWrapper = () => {
   return (
     <div>
-      <DropdownButton title="스크롤메인">
-        <Dropdown.Item href="/scroll1/scroll1">스크롤1</Dropdown.Item>
-        <Dropdown.Item href="/scroll1/scroll2">스크롤2</Dropdown.Item>
+      <DropdownButton title="스크롤">
+        <Dropdown.Item href="/scroll/main">메인스크롤</Dropdown.Item>
+        <Dropdown.Item href="/scroll/sub">서브스크롤</Dropdown.Item>
       </DropdownButton>
-      <Route path="/scroll1/scroll1" component={InfinityScrollList} />
-      <Route path="/scroll1/scroll2" component={InfinityScrollList2} />
+      <Route path="/scroll/main" component={InfinityScrollList} />
+      <Route path="/scroll/sub" component={InfinityScrollList2} />
     </div>
   )
 }

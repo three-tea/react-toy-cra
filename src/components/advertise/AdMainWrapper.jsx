@@ -7,12 +7,12 @@ import { Dropdown, DropdownButton } from 'react-bootstrap'
 const AdMainWrapper = () => {
   return (
     <div>
-      <DropdownButton title="메인메뉴">
-        <Dropdown.Item href="/advertise1/advertise1">메인1</Dropdown.Item>
-        <Dropdown.Item href="/advertise1/advertise2">메인2</Dropdown.Item>
+      <DropdownButton title="메인광고">
+        <Dropdown.Item href="/advertise/main">메인광고</Dropdown.Item>
+        <Dropdown.Item href="/advertise/sub">서브광고</Dropdown.Item>
       </DropdownButton>
-      <Route path="/advertise1/advertise1" component={AdMain} />
-      <Route path="/advertise1/advertise2" component={AdMain2} />
+      <Route path="/advertise/main" component={AdMain} />
+      <Route path="/advertise/sub" component={AdMain2} />
     </div>
   )
 }

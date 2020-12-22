@@ -7,12 +7,12 @@ import VideoPlayer2 from './VideoPlayer2'
 const VideoWrapper = () => {
   return (
     <div>
-      <DropdownButton title="비디오메인">
-        <Dropdown.Item href="/video1/video1">비디오1</Dropdown.Item>
-        <Dropdown.Item href="/video1/video2">비디오2</Dropdown.Item>
+      <DropdownButton title="비디오">
+        <Dropdown.Item href="/video/main">메인비디오</Dropdown.Item>
+        <Dropdown.Item href="/video/sub">서브비디오</Dropdown.Item>
       </DropdownButton>
-      <Route path="/video1/video1" component={VideoPlayer} />
-      <Route path="/video1/video2" component={VideoPlayer2} />
+      <Route path="/video/main" component={VideoPlayer} />
+      <Route path="/video/sub" component={VideoPlayer2} />
     </div>
   )
 }
