@@ -18,8 +18,7 @@ class ListItemControl extends Component {
   }
 
   render() {
-    const { inputFile } = this.state
-    const { contentsList, setContentsItem, updateContentsItem } = this.props
+    const { contentsList, setContentsItem } = this.props
     console.log('contentsList:', contentsList)
     const isEmpty = contentsList?.isEmpty()
     return (

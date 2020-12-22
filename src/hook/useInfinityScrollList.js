@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from "react";
 
 const useInfinityScrollList = ({ targetRef, callback, options }) => {
   // const [list, setList] = useState(contents);
@@ -37,7 +37,7 @@ const useInfinityScrollList = ({ targetRef, callback, options }) => {
     return () => {
       observer.disconnect();
     };
-  }, []);
+  }, [callback, options, targetRef]);
 
   return {
     // isLoading,

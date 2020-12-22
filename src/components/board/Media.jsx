@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react'
+import React, { useMemo } from 'react'
 import { Tab, Tabs } from 'react-bootstrap'
 import { fromJS } from 'immutable'
 
@@ -14,7 +14,7 @@ const Item = ({ title, src }) => {
           justifyContent: 'center',
           alignItems: 'center',
         }}>
-        <img src={src} width="150" height="150" />
+        <img src={src} width="150" height="150" alt="미디어이미지" />
       </div>
       <div
         style={{

@@ -1,7 +1,6 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react'
-import { responseData } from '../../utils/utils'
-import useInfinityScrollList from '../../hook/useInfinityScrollList'
-import useIntersectionObserver from '../../hook/useIntersectionObserver'
+import React, { useMemo, useState } from "react";
+import { responseData } from "../../utils/utils";
+import useIntersectionObserver from "../../hook/useIntersectionObserver";
 
 /**
  *  무한 스크롤 리스트
