@@ -1,6 +1,10 @@
-import React, { useState } from "react";
-import { shallowEqual, useDispatch, useSelector } from "react-redux";
-import { removeContentsItem, setContentsItem, updateContentsItem } from "../../modules/mListItemControl";
+import React, { useState } from 'react'
+import { shallowEqual, useDispatch, useSelector } from 'react-redux'
+import {
+  removeContentsItem,
+  setContentsItem,
+  updateContentsItem,
+} from '../../modules/mListItemControl'
 
 const ListItemControlHook = () => {
   const [inputFile, setInputFile] = useState(null)

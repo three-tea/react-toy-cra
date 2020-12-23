@@ -15,7 +15,8 @@ export function keyMirror(obj, extraKey) {
 
 export function downloadCSV(text, fileName) {
   console.log('downloadCSV')
-  const blob = new Blob(['\uFEFF' + text], { // BOM(Byte Order Mark)는 유니코드 문자, 텍스트 시작 부분에 와야 함
+  const blob = new Blob(['\uFEFF' + text], {
+    // BOM(Byte Order Mark)는 유니코드 문자, 텍스트 시작 부분에 와야 함
     type: 'text/csv', // mime타입, 클라이언트에게 전송된 문서의 다양성을 알려주기 위한 메커니즘, type/subtype구조, 전통적으로 소문자로 쓰임
     // endings: 'transparent', // default, 개행문자 변경 없음
     endings: 'native', // native는 호스트 OS 파일 시스템 규칙과 일치하도록 개행문자를 변경

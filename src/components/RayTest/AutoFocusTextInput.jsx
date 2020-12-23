@@ -1,20 +1,19 @@
-import React, { Component, createRef } from 'react';
-import RefTest from './RefTest';
-import RefHookTest from './RefHookTest';
+import React, { Component, createRef } from 'react'
+import RefHookTest from './RefHookTest'
 
 class AutoFocusTextInput extends Component {
   constructor(props) {
-    super(props);
-    createRef();
-    this.refTestRef = null;
-    this.setInputRef = (element) => {
-      this.refTestRef = element;
-    };
+    super(props)
+    createRef()
+    this.refTestRef = null
+    this.setInputRef = element => {
+      this.refTestRef = element
+    }
   }
 
   componentDidMount() {
     if (this.refTestRef) {
-      this.refTestRef.focus();
+      this.refTestRef.focus()
     }
   }
 
@@ -24,8 +23,8 @@ class AutoFocusTextInput extends Component {
         {/*<RefTest ref={this.refTestRef} />*/}
         <RefHookTest inputRef={this.setInputRef} />
       </div>
-    );
+    )
   }
 }
 
-export default AutoFocusTextInput;
+export default AutoFocusTextInput

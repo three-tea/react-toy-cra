@@ -1,8 +1,8 @@
-import { Dropdown, DropdownButton } from "react-bootstrap";
-import { Route } from "react-router-dom";
-import React from "react";
-import CSVDownload from "./CSVDownload";
-import CSVDownload2 from "./CSVDownload2";
+import { Dropdown, DropdownButton } from 'react-bootstrap'
+import { Route } from 'react-router-dom'
+import React from 'react'
+import CSVDownload from './CSVDownload'
+import CSVDownload2 from './CSVDownload2'
 
 const DownloadWrapper = () => {
   return (

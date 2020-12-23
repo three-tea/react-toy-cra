@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect } from 'react'
 
 const useInfinityScrollList = ({ targetRef, callback, options }) => {
   // const [list, setList] = useState(contents);
@@ -29,20 +29,20 @@ const useInfinityScrollList = ({ targetRef, callback, options }) => {
     //   threshold: 0.5,
     // };
 
-    const observer = new IntersectionObserver(callback, options);
+    const observer = new IntersectionObserver(callback, options)
     if (targetRef.current) {
-      observer.observe(targetRef.current);
+      observer.observe(targetRef.current)
     }
 
     return () => {
-      observer.disconnect();
-    };
-  }, [callback, options, targetRef]);
+      observer.disconnect()
+    }
+  }, [callback, options, targetRef])
 
   return {
     // isLoading,
     // list,
-  };
-};
+  }
+}
 
-export default useInfinityScrollList;
+export default useInfinityScrollList

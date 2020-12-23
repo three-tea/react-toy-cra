@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react'
 
 export const useIntersectionObserver = (onCallback, options) => {
   const [targetRef, setTargetRef] = useState(null)

@@ -1,22 +1,19 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react'
 
 const RefHookTest2 = () => {
-  const [inputRef, setInputRef] = useState(null);
+  const [inputRef, setInputRef] = useState(null)
 
   useEffect(() => {
     if (inputRef) {
-      inputRef.focus();
+      inputRef.focus()
     }
-  }, [inputRef]);
+  }, [inputRef])
 
   return (
     <div>
-      <input
-        type="text"
-        ref={(element) => setInputRef(element)}
-      />
+      <input type="text" ref={element => setInputRef(element)} />
     </div>
-  );
-};
+  )
+}
 
-export default RefHookTest2;
+export default RefHookTest2

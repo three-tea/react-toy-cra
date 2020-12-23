@@ -1,8 +1,8 @@
 import React from 'react'
 import { Route } from 'react-router-dom'
 import BoardMain from './BoardMain'
-import BoardMain2 from "./BoardMain2";
-import { Dropdown, DropdownButton } from "react-bootstrap";
+import BoardMain2 from './BoardMain2'
+import { Dropdown, DropdownButton } from 'react-bootstrap'
 
 const BoardWrapper = () => {
   return (

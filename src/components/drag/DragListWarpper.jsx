@@ -1,8 +1,8 @@
-import React from "react";
-import { Dropdown, DropdownButton } from "react-bootstrap";
-import { Route } from "react-router-dom";
-import DragList from "./DragList";
-import DragList2 from "./DragList2";
+import React from 'react'
+import { Dropdown, DropdownButton } from 'react-bootstrap'
+import { Route } from 'react-router-dom'
+import DragList from './DragList'
+import DragList2 from './DragList2'
 
 const DragListWrapper = () => {
   return (

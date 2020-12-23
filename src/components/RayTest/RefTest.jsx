@@ -1,15 +1,15 @@
-import React, { Component, createRef } from 'react';
+import React, { Component } from 'react'
 
 class RefTest extends Component {
   constructor(props) {
-    super(props);
+    super(props)
     // console.log('constructor()');
     // this.textInputRef = createRef();
-    this.textInput = null;
-    this.textInputRef = (element) => {
+    this.textInput = null
+    this.textInputRef = element => {
       // console.log('element:', element);
-      this.textInput = element;
-    };
+      this.textInput = element
+    }
   }
 
   componentDidMount() {
@@ -28,27 +28,24 @@ class RefTest extends Component {
 
   handleTextInput = () => {
     if (this.textInput) {
-      this.textInput.focus();
+      this.textInput.focus()
     }
-  };
+  }
 
   render() {
     // console.log('render()');
     return (
       <div>
         <div>RefTest</div>
-        <input
-          type="text"
-          ref={this.textInputRef}
-        />
+        <input type="text" ref={this.textInputRef} />
         <input
           type="button"
           value="Focus the text input"
           onClick={this.handleTextInput}
         />
       </div>
-    );
+    )
   }
 }
 
-export default RefTest;
+export default RefTest
