@@ -1,6 +1,7 @@
 import React, { useMemo, useState } from 'react'
 import { responseData } from '../../utils/utils'
 import useIntersectionObserver from '../../hook/useIntersectionObserver'
+import { ListGroup } from 'react-bootstrap'
 
 /**
  *  무한 스크롤 리스트
@@ -23,7 +24,6 @@ const InfinityScrollList = () => {
     () => ({
       border: '1px solid',
       paddingTop: 5,
-      background: 'rgba(255,100,100,0.5)',
     }),
     []
   )
@@ -31,11 +31,11 @@ const InfinityScrollList = () => {
     () => ({
       listStyle: 'none',
       height: 50,
-      lineHeight: '50px',
-      marginRight: 35,
-      border: '1px solid',
+      marginLeft: 5,
+      marginRight: 5,
       marginBottom: 5,
-      background: 'rgba(0,255,0,0.3)',
+      paddingLeft: 10,
+      paddingRight: 10,
     }),
     []
   )
@@ -48,29 +48,6 @@ const InfinityScrollList = () => {
     }, 1000)
   }
 
-  // useEffect(() => {
-  //   const callback = (entries) => {
-  //     entries.forEach((entry) => {
-  //       if (entry.isIntersecting) {
-  //         fetchData();
-  //       }
-  //     });
-  //   };
-  //
-  //   const options = {
-  //     threshold: 0.5,
-  //   };
-  //
-  //   const observer = new IntersectionObserver(callback, options);
-  //   if (targetRef.current) {
-  //     observer.observe(targetRef.current);
-  //   }
-  //
-  //   return () => {
-  //     observer.disconnect();
-  //   };
-  // }, [contents, list]);
-
   const intersectionCallback = (entry, observer) => {
     if (entry.isIntersecting) {
       fetchData()
@@ -81,13 +58,13 @@ const InfinityScrollList = () => {
     threshold: 0.5,
   }
 
-  const [targetRef, setTargetRef] = useIntersectionObserver({
+  const [, setTargetRef] = useIntersectionObserver({
     callback: intersectionCallback,
     options: intersectionOptions,
   })
 
   return (
-    <ul style={listStyle}>
+    <ListGroup as="ul" style={listStyle}>
       {list.map((item, index) => {
         const { id, name } = item
         const key = `${id}_${index}`
@@ -95,18 +72,38 @@ const InfinityScrollList = () => {
         return (
           <div key={key}>
             {isLoading && isLast ? (
-              <li style={{ ...listItemStyle, background: 'skyblue' }}>
+              <ListGroup.Item as="li" style={{ ...listItemStyle, background: 'skyblue' }}>
                 로딩중입니다...
-              </li>
+              </ListGroup.Item>
             ) : (
-              <li style={listItemStyle} ref={isLast ? setTargetRef : undefined}>
+              <ListGroup.Item as="li" style={listItemStyle} ref={isLast ? setTargetRef : undefined}>
                 {name}
-              </li>
+              </ListGroup.Item>
             )}
           </div>
         )
       })}
-    </ul>
+    </ListGroup>
+    // <ul style={listStyle}>
+    //   {list.map((item, index) => {
+    //     const { id, name } = item
+    //     const key = `${id}_${index}`
+    //     const isLast = index === list.size - 1
+    //     return (
+    //       <div key={key}>
+    //         {isLoading && isLast ? (
+    //           <li style={{ ...listItemStyle, background: 'skyblue' }}>
+    //             로딩중입니다...
+    //           </li>
+    //         ) : (
+    //           <li style={listItemStyle} ref={isLast ? setTargetRef : undefined}>
+    //             {name}
+    //           </li>
+    //         )}
+    //       </div>
+    //     )
+    //   })}
+    // </ul>
   )
 }
 

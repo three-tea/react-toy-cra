@@ -9,9 +9,6 @@ const useIntersectionObserver = ({ callback, options }) => {
         callback(entry, observer)
       }
     }
-    const options = {
-      threshold: 0.5,
-    }
 
     const observer = new IntersectionObserver(intersectionCallback, options)
     if (targetRef) {
@@ -21,7 +18,7 @@ const useIntersectionObserver = ({ callback, options }) => {
     return () => {
       observer.disconnect()
     }
-  }, [callback, targetRef])
+  }, [callback, options, targetRef])
 
   return [targetRef, setTargetRef]
 }
