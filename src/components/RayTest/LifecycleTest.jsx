@@ -4,7 +4,6 @@ import LifecycleTestChild from './LifecycleTestChild'
 class LifecycleTest extends Component {
   constructor(props) {
     super(props)
-    // console.log('constructor()')
     this.state = {
       value: '',
       color: 'red',
@@ -12,9 +11,6 @@ class LifecycleTest extends Component {
   }
 
   shouldComponentUpdate(nextProps, nextState, nextContext) {
-    // console.log('shouldComponentUpdate() - nextProps:', nextProps)
-    // console.log('shouldComponentUpdate() - nextState:', nextState)
-    // console.log('shouldComponentUpdate() - nextContext', nextContext)
     return nextState.value !== '2'
   }
 
@@ -34,29 +30,16 @@ class LifecycleTest extends Component {
   }
 
   getSnapshotBeforeUpdate(prevProps, prevState) {
-    // console.log('getSnapshotBeforeUpdate() - prevProps:', prevProps)
-    // console.log('getSnapshotBeforeUpdate() - prevState:', prevState)
     if (prevState.value !== this.state.value) {
       return 'blue'
     }
     return null
   }
 
-  componentDidMount() {
-    // console.log('componentDidMount()')
-  }
-
   componentDidUpdate(prevProps, prevState, snapshot) {
-    // console.log('componentDidUpdate() - prevProps:', prevProps)
-    // console.log('componentDidUpdate() - prevState:', prevState)
-    // console.log('componentDidUpdate() - snapshot:', snapshot)
     if (snapshot) {
       this.setState({ color: snapshot })
     }
-  }
-
-  componentWillUnmount() {
-    // console.log('componentWillUnmount()')
   }
 }
 

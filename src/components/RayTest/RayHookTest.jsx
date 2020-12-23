@@ -6,17 +6,6 @@ const RayHookTest = () => {
   const dispatch = useDispatch()
   const { name } = useSelector(state => state.get('test'), shallowEqual)
 
-  var myName = 'hi'
-  function myName() {
-    // console.log('myName()')
-  }
-  function yourName() {
-    // console.log('yourName()')
-  }
-  var yourName = 'bye'
-  // console.log(typeof myName)
-  // console.log(typeof yourName)
-
   return (
     <>
       <input

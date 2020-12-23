@@ -4,19 +4,21 @@ import useDragList from '../../hook/useDragList'
 
 /**
  * 드래그 가능한 타겟에서 발생한 이벤트
+ *
+ * onDragStart - 요소를 끌기 시작했을 때
+ * onDrag - 요소를 끌 때
+ * onDragEnd - 요소의 드래그를 완료했을 때
  */
-// onDragStart - 요소를 끌기 시작했을 때
-// onDrag - 요소를 끌 때
-// onDragEnd - 요소의 드래그를 완료했을 때
 
 /**
  * 드롭 타겟에서 발생한 이벤트
+ *
+ * onDragEnter - 끌어온 요소가 드롭 타겟에 들어갔을 때
+ * onDragOver - 드래그 한 요소가 드롭 타겟 위에 있을 때
+ * onDragLeave - 드래그 한 요소가 드롭 타겟을 벗어날 때
+ * onDrop - 끌어 놓은 요소가 드롭 타겟에 드롭될 때
+ * Array.from(listRef.current.children).indexOf(e.target)
  */
-// onDragEnter - 끌어온 요소가 드롭 타겟에 들어갔을 때
-// onDragOver - 드래그 한 요소가 드롭 타겟 위에 있을 때
-// onDragLeave - 드래그 한 요소가 드롭 타겟을 벗어날 때
-// onDrop - 끌어 놓은 요소가 드롭 타겟에 드롭될 때
-// Array.from(listRef.current.children).indexOf(e.target)
 
 const DragList = () => {
   const { contents } = responseData

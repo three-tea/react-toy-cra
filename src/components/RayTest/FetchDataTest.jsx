@@ -4,7 +4,7 @@ const getData = url => {}
 
 const Text = () => {
   const [value, setValue] = useState('')
-  const [list, setList] = useState([])
+  const [list] = useState([])
 
   const fetchData = async query => {
     const url = 'www.google.com=' + query
@@ -19,14 +19,6 @@ const Text = () => {
         console.log('getData error:', e)
       }
     })
-    // try {
-    //   const data = await getData(url)
-    //   setList(data)
-    //   console.log('url:', url)
-    // } catch (e) {
-    //   console.log('error:', e)
-    // } finally {
-    // }
   }
 
   const onChange = e => {

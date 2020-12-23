@@ -29,21 +29,13 @@ const ListItemControlHook = () => {
           const { files } = e.target
           if (files.length > 0) {
             const [{ name, size, type }] = files // file 객체에서 필요한 특정 정보만 뽑음
-            const blob = new Blob(
-              [JSON.stringify({ hello: 'world' }, null, 2)],
-              { type }
-            )
             const url = URL.createObjectURL(files[0])
             setUrl(url)
             const link = document.createElement('a')
             link.id = 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
             link.href = url
             link.download = name
-            // document.body.appendChild(link)
-            // document.parentNode.append(link)
             link.click()
-            // document.body.removeChild(link)
-
             dispatch(
               setContentsItem({
                 type: type.split('/')[0],
@@ -55,7 +47,6 @@ const ListItemControlHook = () => {
               })
             )
           }
-
           e.target.value = null
         }}
       />

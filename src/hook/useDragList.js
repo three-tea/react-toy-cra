@@ -44,10 +44,6 @@ const useDragList = ({ contents, listRef }) => {
         value.remove(fromIndex).insert(toIndex, value.get(fromIndex))
       )
     )
-    // setList(list.update((value) => value.delete(fromIndex).splice(toIndex, 0, value.get(fromIndex))));
-    // setList(list.delete(fromIndex).splice(toIndex, 0, list.get(fromIndex)));
-    // setList(list.delete(fromIndex).insert(toIndex, list.get(fromIndex)));
-    // setList(list.remove(fromIndex).insert(toIndex, list.get(fromIndex)));
   }
 
   return {

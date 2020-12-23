@@ -19,6 +19,7 @@ function App() {
         <Button href="/">홈</Button>
         <GNB />
       </div>
+      <hr />
       <Route exact={true} path="/" component={Home} />
       <Route path="/advertise" component={AdMainWrapper} />
       <Route path="/board" component={BoardWrapper} />

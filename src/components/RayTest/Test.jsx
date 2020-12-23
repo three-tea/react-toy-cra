@@ -25,10 +25,6 @@ const Test = props => {
     <Container className="p-3">
       <Button onClick={onClick}>Show Toast</Button>
       <ToastComponent />
-      {/*<Toast ref={props.testRef} animation={true} show={show} onClose={onClose}>*/}
-      {/*  <Toast.Header>Toast.Header</Toast.Header>*/}
-      {/*  <Toast.Body>Toast.Body</Toast.Body>*/}
-      {/*</Toast>*/}
     </Container>
   )
 }

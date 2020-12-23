@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 
 const RayUseEffectTest = () => {
   const [value, setValue] = useState('')
@@ -6,10 +6,6 @@ const RayUseEffectTest = () => {
   const onChange = e => {
     setValue(e.target.value)
   }
-
-  useEffect(() => {
-    // console.log('useEffect()')
-  }, [])
 
   return (
     <>

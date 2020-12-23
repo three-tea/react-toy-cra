@@ -52,15 +52,7 @@ class ListItemControl extends Component {
             <li>데이터가 없습니다.</li>
           ) : (
             contentsList?.map((v, i) => (
-              <li
-                key={i}
-                onClick={() => {
-                  // const { name, size, type } = inputFile
-                  // updateContentsItem(i, {
-                  //   type: type.split('/')[0],
-                  //   data: { name, size, type },
-                  // })
-                }}>
+              <li key={i}>
                 {v.getIn(['data', 'name'])}
                 <button onClick={this.onDeleteItem(i)}>X</button>
               </li>

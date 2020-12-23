@@ -3,13 +3,10 @@ import React, { useEffect, useReducer } from 'react'
 function CounterTest() {
   const [state, dispatch] = useReducer(reducer, initialState)
   const { count, step } = state
-  // const [count, setCount] = useState(0);
-  // const [step, setStep] = useState(1);
 
   useEffect(() => {
     const id = setInterval(() => {
       dispatch({ type: 'tick' })
-      // setCount((c) => c + step);
     }, 1000)
     return () => {
       clearInterval(id)
@@ -26,7 +23,6 @@ function CounterTest() {
             type: 'step',
             step: Number(e.target.value),
           })
-          // setStep(Number(e.target.value));
         }}
       />
     </div>

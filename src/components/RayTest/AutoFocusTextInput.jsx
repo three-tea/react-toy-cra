@@ -20,7 +20,6 @@ class AutoFocusTextInput extends Component {
   render() {
     return (
       <div>
-        {/*<RefTest ref={this.refTestRef} />*/}
         <RefHookTest inputRef={this.setInputRef} />
       </div>
     )

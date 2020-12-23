@@ -18,8 +18,6 @@ const InfinityScrollList = () => {
   const [list, setList] = useState(contents)
   const [isLoading, setLoading] = useState(false)
 
-  // const targetRef = useRef(null);
-
   const listStyle = useMemo(
     () => ({
       border: '1px solid',
@@ -72,11 +70,16 @@ const InfinityScrollList = () => {
         return (
           <div key={key}>
             {isLoading && isLast ? (
-              <ListGroup.Item as="li" style={{ ...listItemStyle, background: 'skyblue' }}>
+              <ListGroup.Item
+                as="li"
+                style={{ ...listItemStyle, background: 'skyblue' }}>
                 로딩중입니다...
               </ListGroup.Item>
             ) : (
-              <ListGroup.Item as="li" style={listItemStyle} ref={isLast ? setTargetRef : undefined}>
+              <ListGroup.Item
+                as="li"
+                style={listItemStyle}
+                ref={isLast ? setTargetRef : undefined}>
                 {name}
               </ListGroup.Item>
             )}
@@ -84,26 +87,6 @@ const InfinityScrollList = () => {
         )
       })}
     </ListGroup>
-    // <ul style={listStyle}>
-    //   {list.map((item, index) => {
-    //     const { id, name } = item
-    //     const key = `${id}_${index}`
-    //     const isLast = index === list.size - 1
-    //     return (
-    //       <div key={key}>
-    //         {isLoading && isLast ? (
-    //           <li style={{ ...listItemStyle, background: 'skyblue' }}>
-    //             로딩중입니다...
-    //           </li>
-    //         ) : (
-    //           <li style={listItemStyle} ref={isLast ? setTargetRef : undefined}>
-    //             {name}
-    //           </li>
-    //         )}
-    //       </div>
-    //     )
-    //   })}
-    // </ul>
   )
 }
 

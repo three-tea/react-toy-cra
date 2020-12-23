@@ -23,7 +23,6 @@ export default createReducer(initialState, {
   },
   [List.DELETE_ITEM]: (state, { index }) => {
     return state.update('listItems', value => value.delete(index))
-    // return state.set('listItems', state.get('listItems').delete(index));
   },
   [List.SAVE_ERROR]: (state, { error }) => {
     return state.set('error', error)
@@ -62,7 +61,6 @@ export const getList = () => {
     try {
       Promise.all([getQueryData('react'), getQueryData('redux')]).then(
         ([result1, result2]) => {
-          // dispatch(saveContents(result1.data.page))
           dispatch(saveContents(result2.data.hits))
         }
       )
@@ -73,40 +71,3 @@ export const getList = () => {
     }
   }
 }
-
-// import { keyMirror } from '../utils/utils';
-// import { fromJS } from 'immutable';
-// import { createReducer } from 'redux-immutablejs';
-//
-// // Action Type
-// const List = keyMirror({
-//   SAVE_CONTENTS: null,
-//   DELETE_ITEM: null,
-// });
-//
-// // InitialState
-// const initialState = fromJS({
-//   listItems: [],
-// });
-//
-// // Reducer
-// export default createReducer(initialState, {
-//   [List.SAVE_CONTENTS]: (state, { listItems }) => state.set('listItems', fromJS(listItems)),
-//   [List.DELETE_ITEM]: (state, { index }) => state.update('listItems', (value) => value.delete(index)),
-//   // [List.DELETE_ITEM]: (state, { index }) => state.set('listItems', state.get('listItems').delete(index)),
-// });
-//
-// // Action
-// export const saveContents = (listItems) => {
-//   return {
-//     type: List.SAVE_CONTENTS,
-//     listItems,
-//   };
-// };
-//
-// export const deleteItem = (index) => {
-//   return {
-//     type: List.DELETE_ITEM,
-//     index,
-//   };
-// };
