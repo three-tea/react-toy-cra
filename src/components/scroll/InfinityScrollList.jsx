@@ -18,7 +18,6 @@ const InfinityScrollList = () => {
   const [isLoading, setLoading] = useState(false)
 
   // const targetRef = useRef(null);
-  console.log('list:', list)
 
   const listStyle = useMemo(
     () => ({
@@ -86,7 +85,6 @@ const InfinityScrollList = () => {
     callback: intersectionCallback,
     options: intersectionOptions,
   })
-  console.log('setTargetRef:', setTargetRef)
 
   return (
     <ul style={listStyle}>

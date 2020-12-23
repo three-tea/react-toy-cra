@@ -8,7 +8,7 @@ const RayUseEffectTest = () => {
   }
 
   useEffect(() => {
-    console.log('useEffect()')
+    // console.log('useEffect()')
   }, [])
 
   return (

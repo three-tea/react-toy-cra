@@ -4,9 +4,9 @@ const LifecycleHookTest = () => {
   const [value, setValue] = useState('')
 
   useEffect(() => {
-    console.log('componentDidMount()')
+    // console.log('componentDidMount()')
     return () => {
-      console.log('componentWillUnmount()')
+      // console.log('componentWillUnmount()')
     }
   }, [value])
 

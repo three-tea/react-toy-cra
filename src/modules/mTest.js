@@ -26,6 +26,6 @@ export const changeStateByKey = (key, value) => ({
 // Middleware
 export function test() {
   return (dispatch, getState) => {
-    console.log(getState().toJS())
+    // console.log(getState().toJS())
   }
 }

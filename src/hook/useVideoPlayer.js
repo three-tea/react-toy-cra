@@ -14,7 +14,6 @@ const useVideoPlayer = ({ videoRef }) => {
   }, [])
 
   const onMuted = useCallback(() => {
-    console.log('isMuted:', isMuted)
     setIsMuted(!isMuted)
   }, [isMuted])
 

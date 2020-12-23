@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 
 const RefHookTest = ({ inputRef }) => {
-  console.log('inputRef:', inputRef)
   useState(null)
   const textInputRef = useRef(null)
 

@@ -6,8 +6,6 @@ class LifecycleTestChild extends Component {
   }
 
   static getDerivedStateFromProps(props, state) {
-    console.log('getDerivedStateFromProps() - props:', props)
-    console.log('getDerivedStateFromProps() - state:', state)
     if (props.color !== state.color) {
       return {
         color: props.color,

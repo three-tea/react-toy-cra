@@ -62,14 +62,11 @@ export const getList = () => {
     try {
       Promise.all([getQueryData('react'), getQueryData('redux')]).then(
         ([result1, result2]) => {
-          console.log('result1:', result1)
-          console.log('result2:', result2)
           // dispatch(saveContents(result1.data.page))
           dispatch(saveContents(result2.data.hits))
         }
       )
     } catch (e) {
-      console.log('getList e:', e.response.data)
       const { errorCode, message } = e.response.data
       // validation에 대한 Map()을 저장하고 component에서 수신
       dispatch(saveError({ errorCode, message }))

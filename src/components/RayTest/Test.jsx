@@ -5,7 +5,6 @@ import Toast from 'react-bootstrap/Toast'
 
 const Test = props => {
   const [show, toggleShow] = useState(false)
-  console.log('props:', props)
 
   const onClick = () => {
     toggleShow(true)

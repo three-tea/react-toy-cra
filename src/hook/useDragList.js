@@ -18,7 +18,6 @@ const useDragList = ({ contents, listRef }) => {
 
   const handleDragStart = e => {
     const fromIndex = getListItemIndex(e.target)
-    console.log('fromIndex:', fromIndex)
     setFromIndex(fromIndex)
   }
 
@@ -26,7 +25,6 @@ const useDragList = ({ contents, listRef }) => {
     e.preventDefault()
     setFromIndex(-1)
     setMovingIndex(-1)
-    console.log('list:', list.toJS())
   }
 
   const handleDragEnter = e => {
@@ -41,7 +39,6 @@ const useDragList = ({ contents, listRef }) => {
   const handleDrop = e => {
     e.preventDefault()
     const toIndex = getListItemIndex(e.target)
-    console.log('toIndex:', toIndex)
     setList(
       list.update(value =>
         value.remove(fromIndex).insert(toIndex, value.get(fromIndex))

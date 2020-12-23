@@ -7,14 +7,11 @@ function CounterTest() {
   // const [step, setStep] = useState(1);
 
   useEffect(() => {
-    console.log('useEffect()')
     const id = setInterval(() => {
-      console.log('setInterval()')
       dispatch({ type: 'tick' })
       // setCount((c) => c + step);
     }, 1000)
     return () => {
-      console.log('clean-up')
       clearInterval(id)
     }
   }, [dispatch])

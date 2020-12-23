@@ -11,11 +11,9 @@ function SearchResults() {
 
   useEffect(() => {
     const url = getFetchUrl()
-    console.log('react - url:', url)
 
     async function fetchData() {
       const result = await axios(url)
-      console.log('react - result:', result)
       setData(result.data)
     }
 

@@ -19,7 +19,6 @@ class ListItemControl extends Component {
 
   render() {
     const { contentsList, setContentsItem } = this.props
-    console.log('contentsList:', contentsList)
     const isEmpty = contentsList?.isEmpty()
     return (
       <>
@@ -28,7 +27,6 @@ class ListItemControl extends Component {
           onChange={e => {
             const { files } = e.target
             if (files.length > 0) {
-              console.log('files[0]:', files[0])
               const [{ name, size, type }] = files // file 객체에서 필요한 특정 정보만 뽑음
               setContentsItem({
                 type: type.split('/')[0],

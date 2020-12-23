@@ -8,14 +8,14 @@ const RayHookTest = () => {
 
   var myName = 'hi'
   function myName() {
-    console.log('myName()')
+    // console.log('myName()')
   }
   function yourName() {
-    console.log('yourName()')
+    // console.log('yourName()')
   }
   var yourName = 'bye'
-  console.log(typeof myName)
-  console.log(typeof yourName)
+  // console.log(typeof myName)
+  // console.log(typeof yourName)
 
   return (
     <>
