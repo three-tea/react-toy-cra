@@ -21,9 +21,7 @@ const Card = ({ children, title, titleData, buttonTitle, onButton }) => {
       <div style={{ fontSize: 40 }}>
         <b>{titleData}</b>
       </div>
-      <div style={{ marginTop: 20 }}>
-        {children}
-      </div>
+      <div style={{ marginTop: 20 }}>{children}</div>
     </div>
   )
 }

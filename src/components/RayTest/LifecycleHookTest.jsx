@@ -1,29 +1,18 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react'
 
 const LifecycleHookTest = () => {
-  const [value, setValue] = useState('');
+  const [value, setValue] = useState('')
 
-  useEffect(() => {
-    console.log('componentDidMount()');
-    return () => {
-      console.log('componentWillUnmount()');
-    };
-  }, [value]);
-
-  const onChange = (e) => {
-    setValue(e.target.value);
-  };
+  const onChange = e => {
+    setValue(e.target.value)
+  }
 
   return (
     <div>
       <div>LifecycleHookTest</div>
-      <input
-        type="text"
-        value={value}
-        onChange={onChange}
-      />
+      <input type="text" value={value} onChange={onChange} />
     </div>
-  );
-};
+  )
+}
 
-export default LifecycleHookTest;
+export default LifecycleHookTest

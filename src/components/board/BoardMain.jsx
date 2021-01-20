@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import { fromJS } from 'immutable'
 import styled from 'styled-components'
-import { Table, Card, Pagination } from 'react-bootstrap'
+import { Pagination, Table } from 'react-bootstrap'
 import Payment from './Payment'
 import Media from './Media'
 

@@ -1,13 +1,13 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useState } from 'react'
 
 const MeasureExample = () => {
-  const [height, setHeight] = useState(0);
+  const [height, setHeight] = useState(0)
 
-  const measuredRef = useCallback((node) => {
+  const measuredRef = useCallback(node => {
     if (node !== null) {
-      setHeight(node.getBoundingClientRect().height);
+      setHeight(node.getBoundingClientRect().height)
     }
-  }, []);
+  }, [])
 
   return (
     <>
@@ -15,6 +15,6 @@ const MeasureExample = () => {
       <h2>The above header is {Math.round(height)}px tall</h2>
     </>
   )
-};
+}
 
-export default MeasureExample;
+export default MeasureExample

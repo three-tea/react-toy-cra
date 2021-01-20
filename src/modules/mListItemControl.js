@@ -18,17 +18,23 @@ const initialState = fromJS({
 export default createReducer(initialState, {
   // TODO: 파라미터로 요소 아이템을 받기
   [ListItemControl.SET_LIST_ITEM]: (state, { data }) => {
-    return state.update('contentsList', contentsList => contentsList.unshift(Map(data || {})))
+    return state.update('contentsList', contentsList =>
+      contentsList.unshift(Map(data || {}))
+    )
   },
 
   // TODO: 아이템 요소 삭제하기
   [ListItemControl.REMOVE_LIST_ITEM]: (state, { index }) => {
-    return state.update('contentsList', contentsList => contentsList.delete(index))
+    return state.update('contentsList', contentsList =>
+      contentsList.delete(index)
+    )
   },
 
   // TODO: 인덱스 받아서 아이템 요소 업데이트
   [ListItemControl.UPDATE_LIST_ITEM_BY_INDEX]: (state, { index, data }) => {
-    return state.update('contentsList', contentsList => contentsList.set(index, Map(data || {})))
+    return state.update('contentsList', contentsList =>
+      contentsList.set(index, Map(data || {}))
+    )
   },
 })
 

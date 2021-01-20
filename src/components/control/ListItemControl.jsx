@@ -18,9 +18,7 @@ class ListItemControl extends Component {
   }
 
   render() {
-    const { inputFile } = this.state
-    const { contentsList, setContentsItem, updateContentsItem } = this.props
-    console.log('contentsList:', contentsList)
+    const { contentsList, setContentsItem } = this.props
     const isEmpty = contentsList?.isEmpty()
     return (
       <>
@@ -29,7 +27,6 @@ class ListItemControl extends Component {
           onChange={e => {
             const { files } = e.target
             if (files.length > 0) {
-              console.log('files[0]:', files[0])
               const [{ name, size, type }] = files // file 객체에서 필요한 특정 정보만 뽑음
               setContentsItem({
                 type: type.split('/')[0],
@@ -55,15 +52,7 @@ class ListItemControl extends Component {
             <li>데이터가 없습니다.</li>
           ) : (
             contentsList?.map((v, i) => (
-              <li
-                key={i}
-                onClick={() => {
-                  // const { name, size, type } = inputFile
-                  // updateContentsItem(i, {
-                  //   type: type.split('/')[0],
-                  //   data: { name, size, type },
-                  // })
-                }}>
+              <li key={i}>
                 {v.getIn(['data', 'name'])}
                 <button onClick={this.onDeleteItem(i)}>X</button>
               </li>
@@ -76,9 +65,9 @@ class ListItemControl extends Component {
 }
 
 const mapStateToProps = state => {
-  const { contentsList } = state.get('listItemControl');
+  const { contentsList } = state.get('listItemControl')
   return {
-    contentsList
+    contentsList,
   }
 }
 

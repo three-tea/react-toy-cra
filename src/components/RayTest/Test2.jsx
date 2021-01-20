@@ -33,7 +33,6 @@ class Test2 extends Component {
         <Toast.Body>Toast.Body</Toast.Body>
       </Toast>
     ))
-    console.log('this.wrapper:', this.wrapper)
 
     return (
       <Container ref={this.wrapper} className="p-3">
